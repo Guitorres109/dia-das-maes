@@ -1,0 +1,33 @@
+/* geral.css */
+
+:root{
+
+  --primary:#b40037;
+  --secondary:#ff5c8a;
+  --accent:#ffd9e5;
+
+  --wine:#6d1130;
+  --pink:#ff5c8a;
+  --pink-light:#ffd9e5;
+
+  --bg:#fff6f8;
+
+  --card:
+  rgba(255,255,255,.72);
+
+  --text:#3b1b26;
+  --text-soft:#6c4b56;
+
+  --shadow:
+  0 15px 40px rgba(0,0,0,.12);
+
+  --font-title:"Cinzel", serif;
+  --font-body:"Poppins", sans-serif;
+
+  --radius-lg:32px;
+  --radius-md:20px;
+  --radius-sm:14px;
+
+  --transition:.35s ease;
+
+}
