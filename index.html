@@ -170,26 +170,22 @@
 
 <script>
   const musica = document.getElementById('bg-music');
+  let liberado = false;
 
-  let iniciou = false;
+  function liberarAudio() {
+    if (liberado) return;
 
-  function tocarMusica() {
-    if (!iniciou) {
-      musica.play()
-        .then(() => {
-          iniciou = true;
-        })
-        .catch(err => {
-          console.log('Bloqueado:', err);
-        });
-    }
+    musica.play().then(() => {
+      liberado = true;
+      window.removeEventListener('scroll', liberarAudio);
+    });
   }
 
-  // toca ao rolar a página
-  window.addEventListener('scroll', tocarMusica);
+  // primeiro toque libera tudo
+  document.addEventListener('touchstart', liberarAudio, { once: true });
 
-  // opcional: também toca no toque/click
-  window.addEventListener('click', tocarMusica);
+  // scroll só depois que já foi liberado pelo toque
+  window.addEventListener('scroll', liberarAudio);
 </script>
 
   <!-- JS -->
