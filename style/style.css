@@ -395,6 +395,11 @@ body::before{
   color:var(--text-soft);
 
   margin-bottom:20px;
+  text-align: left;
+}
+
+.message-card span{
+  color: var(--primary);
 }
 
 /* FOOTER */
