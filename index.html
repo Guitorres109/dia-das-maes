@@ -38,13 +38,13 @@
   <!-- HERO -->
 
   <header class="hero">
-      <small>(Clique na tela)</small>
+      <small>(Clique na foto)</small>
     <div class="hero-content">
       <div class="image-side">
 
 
         <div class="photo-frame large">
-          <img src="./assets/images/mae1.jpg" class="mom-photo">
+          <img id="foto-hero" src="./assets/images/mae1.jpg" class="mom-photo">
         </div>
 
         <div class="floating-photo p1">
@@ -170,22 +170,25 @@
 
 <script>
   const musica = document.getElementById('bg-music');
+  const foto = document.getElementById('foto-hero');
+
   let liberado = false;
 
-  function liberarAudio() {
+  function tocarMusica() {
     if (liberado) return;
 
-    musica.play().then(() => {
-      liberado = true;
-      window.removeEventListener('scroll', liberarAudio);
-    });
+    musica.play()
+      .then(() => {
+        liberado = true;
+      })
+      .catch(err => {
+        console.log("Bloqueado pelo navegador:", err);
+      });
   }
 
-  // primeiro toque libera tudo
-  document.addEventListener('touchstart', liberarAudio, { once: true });
-
-  // scroll só depois que já foi liberado pelo toque
-  window.addEventListener('scroll', liberarAudio);
+  // 🎯 toca ao clicar na foto
+  foto.addEventListener('click', tocarMusica);
+  foto.addEventListener('touchstart', tocarMusica);
 </script>
 
   <!-- JS -->
