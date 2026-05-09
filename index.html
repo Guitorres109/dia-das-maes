@@ -39,9 +39,11 @@
 
   <header class="hero">
 
+      <small style="font-size: 11px; text-align: center;">(Clique na tela)</small>
     <div class="hero-content">
 
       <div class="image-side">
+
 
         <div class="photo-frame large">
           <img src="./assets/images/mae1.jpg" class="mom-photo">
@@ -59,18 +61,19 @@
 
       <div class="text-side">
 
-        <span class="hero-tag">
-          Dia das Mães 💖
-        </span>
-
-        <h1>
-          Feliz Dia <br>
-          das Mães
-        </h1>
-
-        <p>
-          Uma pequena homenagem para a mulher mais importante da minha vida.
-        </p>
+          
+          <span class="hero-tag">
+              Dia das Mães 💖
+            </span>
+            
+            <h1>
+                Feliz Dia <br>
+                das Mães
+            </h1>
+            
+            <p>
+                Uma pequena homenagem para a mulher mais importante da minha vida.
+            </p>
 
       </div>
 
@@ -165,9 +168,24 @@
 
   <!-- ÁUDIO -->
 
-  <audio autoplay loop>
-    <source src="./assets/music/mae.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="bg-music" loop>
+  <source src="./assets/music/Roberto Carlos - Como É Grande o Meu Amor Por Você - Versão Remasterizada (SPOTISAVER).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const musica = document.getElementById('bg-music');
+
+  // tenta tocar quando a página carregar
+  musica.play().catch(() => {
+
+    // se o navegador bloquear,
+    // toca no primeiro clique do usuário
+    document.addEventListener('click', () => {
+      musica.play();
+    }, { once: true });
+
+  });
+</script>
 
   <!-- JS -->
 
