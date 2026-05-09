@@ -38,8 +38,6 @@
   <!-- HERO -->
 
   <header class="hero">
-
-      <small style="font-size: 11px; text-align: center;">(Clique na tela)</small>
     <div class="hero-content">
 
       <div class="image-side">
@@ -173,16 +171,25 @@
 <script>
   const musica = document.getElementById('bg-music');
 
-  // tenta tocar quando a página carregar
-  musica.play().catch(() => {
+  let iniciou = false;
 
-    // se o navegador bloquear,
-    // toca no primeiro clique do usuário
-    document.addEventListener('click', () => {
-      musica.play();
-    }, { once: true });
+  function tocarMusica() {
+    if (!iniciou) {
+      musica.play()
+        .then(() => {
+          iniciou = true;
+        })
+        .catch(err => {
+          console.log('Bloqueado:', err);
+        });
+    }
+  }
 
-  });
+  // toca ao rolar a página
+  window.addEventListener('scroll', tocarMusica);
+
+  // opcional: também toca no toque/click
+  window.addEventListener('click', tocarMusica);
 </script>
 
   <!-- JS -->
